@@ -34,16 +34,34 @@ listo = []
 df = pd.read_csv('/Users/josh_nicholas/github/pacific_extractives_trade/bclscrape/summary_csvs/2008summary.csv')
 
 
-df["2007 2006"] = df["2007 2006"].fillna("0 0")
+
 # df[['2007', '2006']] = df["2007 2006"].str.split(' ', expand=True)
 
-df["2007 2006"] = df["2007 2006"].str.strip()
+# df["2007 2006"] = df["2007 2006"].str.replace("-", '').str.strip()
+# df['2004 2003 2002']= df['2004 2003 2002'].str.replace("-", '').str.strip()
 
-df['2007']= df["2007 2006"].str.split(' ', expand=True)[0]
-df['2006']= df["2007 2006"].str.split(' ', expand=True)[1]
+# df['2001 2000']= df['2001 2000'].str.replace("-", '').str.strip()
+# df['2004 2003 2002']= df['2004 2003 2002'].str.replace("-", '').str.strip()
+
+df = df.replace('-', '')
+
+df['2007']= df["2007 2006"].str.strip().str.split(' ', expand=True)[0]
+df['2006']= df["2007 2006"].str.strip().str.split(' ', expand=True)[1]
+
+df['2004']= df['2004 2003 2002'].str.split(' ', expand=True)[0]
+df['2003']= df['2004 2003 2002'].str.split(' ', expand=True)[1]
+df['2002']= df['2004 2003 2002'].str.split(' ', expand=True)[0]
+
+
+
+
 
 # print(df["2007 2006"].fillna("0 0"))
 print(df)
+
+# ['FINANCIAL', '2007 2006', '2004 2003 2002', '2001 2000', '1999 1998',
+#        '1997 1996 1995', 'Unnamed: 6', '1994', '1993 1992', 'Unnamed: 9',
+#        '1991', '2007', '2006']
 
 ### OLD CODE FOR RENAMING
 
