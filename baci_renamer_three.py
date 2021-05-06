@@ -1223,7 +1223,7 @@ merged_two['hs4'] = merged_two['hs4'].str[:4]
 
 merged_two['hs2'] = merged_two['hs4'].str[:2]
 
-df = merged_two[['Year', 'Exporting country', 'Importing country', 'hs4', 'hs2', 'Value of the trade flow (thousands current USD)',
+df = merged_two[['Year', 'Exporting country', 'Importing country', 'Product category', 'hs4', 'hs2', 'Value of the trade flow (thousands current USD)',
        'Quantity (in metric tons)']]
 
 ### Create Guardian categories
