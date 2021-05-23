@@ -1,8 +1,10 @@
 import pandas as pd 
 import os
+from paths import data_path 
 
-data_path = os.path.dirname(__file__)
-ceevee = f"{data_path}/data/baci_two_all_guardcat.csv"
+# data_path = os.path.dirname(__file__)
+# ceevee = f"{data_path}/data/baci_two_all_guardcat.csv"
+ceevee = f"{data_path}/baci_three_all_guardcat.csv"
 
 df = pd.read_csv(ceevee)
 
@@ -62,6 +64,7 @@ extrac_df = pac_df.loc[pac_df['Category'] != "Other"]
 combo = extrac_df.groupby(['Category'])['Value of the trade flow (thousands current USD)', 'Quantity (in metric tons)'].sum().reset_index()
 # combo['Value of the trade flow (thousands current USD)'] = combo['Value of the trade flow (thousands current USD)'] * 1000
 print(combo.round())
+print(combo['Value of the trade flow (thousands current USD)'].sum())
 
 # ### CALCULATE TOTAL PACIFIC EXPORTS OF EXTRACTIVES (TONNES AND USD)
 
