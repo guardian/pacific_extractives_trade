@@ -1,6 +1,6 @@
-import pandas as pd 
+import pandas as pd
 import os
-from paths import data_path 
+from paths import data_path
 
 pd.options.display.float_format = '{:.0f}'.format
 
@@ -17,7 +17,7 @@ def sankey_output(frame, measure, minimum, countries, extractives_or_no):
 
         print("#### Total exports \n\n")
 
-    else: 
+    else:
         df = frame.loc[frame['Category'] != "Other"]
 
         print("#### Extractive exports \n\n")
@@ -61,7 +61,7 @@ def sankey_output(frame, measure, minimum, countries, extractives_or_no):
 
     return grouped
 
-### SETUP    
+### SETUP
 
 df = pd.read_csv(ceevee)
 
@@ -112,6 +112,9 @@ df.loc[df['Importing country'] ==  "Switzerland, Liechtenstein", 'Importing coun
 df.loc[df['Importing country'] == "Norway, Svalbard and Jan Mayen", 'Importing country'] = "Norway"
 
 df.loc[df['Importing country'] ==  "China, Macao Special Administrative Region", 'Importing country'] = "China"
+# df.loc[df['Importing country'] ==  "China, Macao SAR", 'Importing country'] = "China"
+
+
 df.loc[df['Importing country'] ==  "So. African Customs Union", 'Importing country'] = "South Africa"
 df.loc[df['Importing country'] ==  "Czechia", 'Importing country'] = "Czech Republic"
 
@@ -122,6 +125,8 @@ df.loc[df['Importing country'] ==  "The Former Yugoslav Republic of Macedonia", 
 df.loc[df['Importing country'] ==  "China, Hong Kong SAR", 'Importing country'] = "Hong Kong"
 
 df.loc[df['Importing country'] ==  "C�te d'Ivoire", 'Importing country'] = "CÃ´te d'Ivoire"
+df.loc[df['Importing country'] ==  "C√¥te d'Ivoire", 'Importing country'] = "CÃ´te d'Ivoire"
+
 df.loc[df['Importing country'] ==  "Dem. Rep. of the Congo", 'Importing country'] = "Democratic Republic of the Congo"
 
 df.loc[df['Importing country'] ==  "Dominican Rep.", 'Importing country'] = "Dominican Republic"

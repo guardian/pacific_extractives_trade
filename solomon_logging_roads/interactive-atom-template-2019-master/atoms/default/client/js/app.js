@@ -33,6 +33,8 @@ function makeMap(data2, roadies) {
 	width = width - margin.left - margin.right,
     height = height - margin.top - margin.bottom;
 
+	console.log("width", width)
+
 	d3.select("#graphicContainer svg").remove();
 
     var svg = d3.select(target).append("svg")
@@ -47,7 +49,8 @@ function makeMap(data2, roadies) {
    
 	var projection = d3.geoMercator()
                 .center([162,-9])
-                .scale(4500)
+                // .scale(4500)
+				.scale(width*5)
 				.translate([width/2,height/2]); 
 			
 
@@ -79,18 +82,19 @@ d3.json("<%= path %>/MERC_loggingroads.geojson")])
 						
 						makeMap(countries, roads)
 						var to=null
-						var lastWidth = document.querySelector(target).getBoundingClientRect()
+						var lastWidth = document.querySelector("#graphicContainer").getBoundingClientRect()
 						window.addEventListener('resize', function() {
-							var thisWidth = document.querySelector(target).getBoundingClientRect()
+							var thisWidth = document.querySelector("#graphicContainer").getBoundingClientRect()
 							if (lastWidth != thisWidth) {
 								window.clearTimeout(to);
 								to = window.setTimeout(function() {
 
 										makeMap(countries, roads)
 
-									}, 500)
+									}, 100)
 									}
 						})
         });
 
+		
         
