@@ -28,8 +28,12 @@ grouped['What'] = "Gold"
 with open(f"{stats_path}png_gold_exports.csv", "w") as f:
     grouped.to_csv(f, header=True, index=False)
 
+# for_sankey = grouped[['Exporting country', 'Importing country',
+# 'Quantity (in metric tons)']]
+
 for_sankey = grouped[['Exporting country', 'Importing country',
-'Quantity (in metric tons)']]
+'Value of the trade flow (thousands current USD)']]
+for_sankey['Value of the trade flow (thousands current USD)'] = for_sankey['Value of the trade flow (thousands current USD)'] * 1000
 
 for_sankey.columns = ["source", "target", "value"]
 
@@ -42,7 +46,7 @@ def makeSankey(df):
     template = [
             {
                 "title": "Papua New Guinea gold exports",
-                "subtitle": f"Tonnes of gold exported in 2019",
+                "subtitle": f"Value of the gold exported in 2019 in US dollars",
                 "footnote": "",
                 "source": "CEPII's BACI trade dataset, Guardian analysis",
                 # "dateFormat": "",
